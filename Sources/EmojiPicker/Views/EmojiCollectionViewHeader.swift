@@ -52,7 +52,7 @@ final class EmojiCollectionViewHeader: UICollectionReusableView {
     
     // MARK: - Private methods
     private func setupLayout() {
-        backgroundColor = .popoverBackgroundColor
+        backgroundColor = .systemGroupedBackground
         addSubview(headerLabel)
         
         NSLayoutConstraint.activate([

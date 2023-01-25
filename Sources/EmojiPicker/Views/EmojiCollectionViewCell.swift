@@ -67,11 +67,9 @@ final class EmojiCollectionViewCell: UICollectionViewCell {
     
     private func setupSelectedBackgroundView() {
         let selectedView = UIView()
-        selectedView.backgroundColor = .selectedCellBackgroundViewColor
+        selectedView.backgroundColor = .opaqueSeparator
         selectedView.clipsToBounds = true
-        if #available(iOS 13.0, *) {
-            selectedView.layer.cornerCurve = .continuous
-        }
+        selectedView.layer.cornerCurve = .continuous
         selectedView.layer.cornerRadius = 8
         selectedBackgroundView = selectedView
     }

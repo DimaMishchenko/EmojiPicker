@@ -36,14 +36,14 @@ final class EmojiPickerView: UIView {
     private let separatorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .separatorColor
+        view.backgroundColor = .systemGray3
         return view
     }()
     
     private let categoriesStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .popoverBackgroundColor
+        stackView.backgroundColor = .systemGroupedBackground
         stackView.distribution = .fillEqually
         return stackView
     }()
@@ -77,7 +77,7 @@ final class EmojiPickerView: UIView {
     // MARK: - Init
     init() {
         super.init(frame: .zero)
-        
+        backgroundColor = .systemGroupedBackground
         setupCategoryViews()
     }
     
@@ -103,8 +103,6 @@ final class EmojiPickerView: UIView {
     
     // MARK: - Private methods
     private func setupView() {
-        backgroundColor = .popoverBackgroundColor
-        
         addSubview(collectionView)
         addSubview(categoriesStackView)
         addSubview(separatorView)

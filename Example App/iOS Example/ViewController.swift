@@ -10,6 +10,8 @@ import EmojiPicker
 
 class ViewController: UIViewController {
     
+    private lazy var textField = UITextField()
+  
     private lazy var emojiButton: UIButton = {
         let button = UIButton()
         button.setTitle("😃", for: .normal)
@@ -26,26 +28,31 @@ class ViewController: UIViewController {
     }
     
     @objc private func openEmojiPickerModule(sender: UIButton) {
-        let configuration = EmojiPicker.Configuration(sourceViewController: self, sender: sender)
-        EmojiPicker.present(with: configuration)
+        let configuration = EmojiPicker.Configuration(sender: sender)
+        EmojiPicker.present(on: self, with: configuration) {
+            self.emojiButton.setTitle($0, for: .normal)
+        }
     }
     
     private func setupView() {
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         view.addSubview(emojiButton)
-        
+        view.addSubview(textField)
+        textField.backgroundColor = .systemGray
+        textField.translatesAutoresizingMaskIntoConstraints = false
+      
+        NSLayoutConstraint.activate([
+            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
+            textField.heightAnchor.constraint(equalToConstant: 80),
+            textField.widthAnchor.constraint(equalToConstant: 80)
+        ])
+      
         NSLayoutConstraint.activate([
             emojiButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            emojiButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            emojiButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 200),
             emojiButton.heightAnchor.constraint(equalToConstant: 80),
             emojiButton.widthAnchor.constraint(equalToConstant: 80)
         ])
-    }
-}
-
-// MARK: - EmojiPickerDelegate
-extension ViewController: EmojiPickerDelegate {
-    func didGetEmoji(emoji: String) {
-        emojiButton.setTitle(emoji, for: .normal)
     }
 }

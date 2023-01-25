@@ -7,21 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		964C74A029586565004D92DC /* EmojiPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 964C749F29586565004D92DC /* EmojiPicker */; };
 		F0947A602886C7FA00418FC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0947A5F2886C7FA00418FC9 /* AppDelegate.swift */; };
 		F0947A642886C7FA00418FC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0947A632886C7FA00418FC9 /* ViewController.swift */; };
 		F0947A692886C7FC00418FC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0947A682886C7FC00418FC9 /* Assets.xcassets */; };
 		F0947A6C2886C7FC00418FC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0947A6A2886C7FC00418FC9 /* LaunchScreen.storyboard */; };
-		F0947A762886C87A00418FC9 /* AppImport in Frameworks */ = {isa = PBXBuildFile; productRef = F0947A752886C87A00418FC9 /* AppImport */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		964C749E2958652B004D92DC /* EmojiPicker */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = EmojiPicker; path = ..; sourceTree = "<group>"; };
+		964C74A129586CCE004D92DC /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		F0947A5C2886C7FA00418FC9 /* iOS Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0947A5F2886C7FA00418FC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F0947A632886C7FA00418FC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F0947A682886C7FC00418FC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F0947A6B2886C7FC00418FC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F0947A6D2886C7FC00418FC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0947A732886C83300418FC9 /* AppImport */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = AppImport; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +30,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0947A762886C87A00418FC9 /* AppImport in Frameworks */,
+				964C74A029586565004D92DC /* EmojiPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		964C749D2958652B004D92DC /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				964C749E2958652B004D92DC /* EmojiPicker */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		F0947A532886C7FA00418FC9 = {
 			isa = PBXGroup;
 			children = (
-				F0947A732886C83300418FC9 /* AppImport */,
+				964C749D2958652B004D92DC /* Packages */,
 				F0947A5E2886C7FA00418FC9 /* iOS Example */,
 				F0947A5D2886C7FA00418FC9 /* Products */,
 				F0947A742886C87A00418FC9 /* Frameworks */,
@@ -90,7 +99,7 @@
 			);
 			name = "iOS Example";
 			packageProductDependencies = (
-				F0947A752886C87A00418FC9 /* AppImport */,
+				964C749F29586565004D92DC /* EmojiPicker */,
 			);
 			productName = "iOS Example";
 			productReference = F0947A5C2886C7FA00418FC9 /* iOS Example.app */;
@@ -118,6 +127,7 @@
 			knownRegions = (
 				en,
 				Base,
+				uk,
 			);
 			mainGroup = F0947A532886C7FA00418FC9;
 			productRefGroup = F0947A5D2886C7FA00418FC9 /* Products */;
@@ -158,6 +168,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F0947A6B2886C7FC00418FC9 /* Base */,
+				964C74A129586CCE004D92DC /* uk */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -169,6 +180,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -229,6 +241,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -286,20 +299,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H8V3Y2JKY7;
+				DEVELOPMENT_TEAM = 77X75EH6F4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.egbad.iOS-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = com.emoji.picker.dima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -314,20 +327,20 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H8V3Y2JKY7;
+				DEVELOPMENT_TEAM = 77X75EH6F4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "iOS Example/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.egbad.iOS-Example";
+				PRODUCT_BUNDLE_IDENTIFIER = com.emoji.picker.dima;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -359,9 +372,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F0947A752886C87A00418FC9 /* AppImport */ = {
+		964C749F29586565004D92DC /* EmojiPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AppImport;
+			productName = EmojiPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

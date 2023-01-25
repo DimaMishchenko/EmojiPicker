@@ -23,18 +23,23 @@ import UIKit
 
 public enum EmojiPicker {
     /// Presents emoji picker
-    /// - Parameter configuration: configuration for emoji picker, defined in Models/ directory
-    public static func present(with configuration: Configuration) {
+    /// - Parameters
+    ///  - vc: Parent view controller
+    ///  - configuration: configuration for emoji picker, defined in Models/ directory
+    ///  - selectionHandler: Emoji selection action
+    public static func present(
+        on parentVC: UIViewController,
+        with configuration: Configuration,
+        selectionHandler: @escaping (String) -> Void
+    ) {
         /// Source view controller must conform `EmojiPickerDelegate` protocol, otherwise do nothing
-        guard let delegate = configuration.sourceViewController as? EmojiPickerDelegate else { return }
         let viewController = EmojiPickerViewController()
-        viewController.delegate = delegate
+        viewController.onSelection = selectionHandler
         viewController.sourceView = configuration.sender
         viewController.selectedEmojiCategoryTintColor = configuration.selectedEmojiCategoryTintColor
         viewController.arrowDirection = configuration.arrowDirection
         viewController.horizontalInset = configuration.horizontalInset
         viewController.isDismissAfterChoosing = configuration.isDismissAfterChoosing
-        viewController.customHeight = configuration.customHeight
-        configuration.sourceViewController.present(viewController, animated: true)
+        parentVC.present(viewController, animated: true)
     }
 }

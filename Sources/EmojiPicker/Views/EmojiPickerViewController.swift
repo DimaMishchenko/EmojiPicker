@@ -21,13 +21,9 @@
 
 import UIKit
 
-public protocol EmojiPickerDelegate: AnyObject {
-    func didGetEmoji(emoji: String)
-}
-
 final class EmojiPickerViewController: UIViewController {
     /// Delegate for selecting an emoji object
-    public weak var delegate: EmojiPickerDelegate?
+    public var onSelection: ((String) -> Void)?
     
     /**
      The direction of the arrow for EmojiPicker.
@@ -35,14 +31,6 @@ final class EmojiPickerViewController: UIViewController {
      The default value of this property is `.up`.
      */
     public var arrowDirection: PickerArrowDirectionMode = .up
-    
-    /**
-     Custom height for EmojiPicker.
-     But it will be limited by the distance from `sourceView.origin.y` to the upper or lower bound(depends on `permittedArrowDirections`).
-     
-     The default value of this property is `nil`.
-     */
-    public var customHeight: CGFloat? = nil
     
     /**
      Inset from the sourceView border.
@@ -126,15 +114,15 @@ final class EmojiPickerViewController: UIViewController {
     
     // MARK: - Private methods
     private func bindViewModel() {
-        viewModel.selectedEmoji.bind { [unowned self] emoji in
-            generator?.impactOccurred()
-            delegate?.didGetEmoji(emoji: emoji)
-            if isDismissAfterChoosing {
-                dismiss(animated: true, completion: nil)
+        viewModel.selectedEmoji.bind { [weak self] emoji in
+            self?.generator?.impactOccurred()
+            self?.onSelection?(emoji)
+            if self?.isDismissAfterChoosing == true {
+                self?.dismiss(animated: true, completion: nil)
             }
         }
-        viewModel.selectedEmojiCategoryIndex.bind { [unowned self] categoryIndex in
-            self.emojiPickerView.updateSelectedCategoryIcon(with: categoryIndex)
+        viewModel.selectedEmojiCategoryIndex.bind { [weak self] categoryIndex in
+            self?.emojiPickerView.updateSelectedCategoryIcon(with: categoryIndex)
         }
     }
     
@@ -150,15 +138,25 @@ final class EmojiPickerViewController: UIViewController {
     }
     
     private func setupPreferredContentSize() {
-        let sideInset: CGFloat = 20
-        let screenWidth: CGFloat = UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale
-        let popoverWidth: CGFloat = screenWidth - (sideInset * 2)
-        // The number 0.16 was taken based on the proportion of height to the width of the EmojiPicker on MacOS.
-        let heightProportionToWidth: CGFloat = 1.16
-        preferredContentSize = CGSize(
-            width: popoverWidth,
-            height: customHeight ?? popoverWidth * heightProportionToWidth
-        )
+        let size: CGSize = {
+            switch UIDevice.current.userInterfaceIdiom {
+            case .phone:
+                let sideInset: CGFloat = 20
+                let screenWidth: CGFloat = UIScreen.main.nativeBounds.width / UIScreen.main.nativeScale
+                let popoverWidth: CGFloat = screenWidth - (sideInset * 2)
+                // The number 0.16 was taken based on the proportion of height to the width of the EmojiPicker on MacOS.
+                let heightProportionToWidth: CGFloat = 1.16
+                return CGSize(
+                    width: popoverWidth,
+                    height: popoverWidth * heightProportionToWidth
+                )
+            default:
+                // macOS size
+                return CGSize(width: 410, height: 460)
+            }
+        }()
+       
+        preferredContentSize = size
     }
     
     private func setupArrowDirections() {
